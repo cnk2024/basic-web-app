@@ -15,5 +15,20 @@ export default function QueryProcessor(query: string): string {
     return "cnk2024";
   }
 
+  // if (query.toLowerCase().includes("Which of the following numbers is the largest: ")) {
+  //   let numbers = query.split(" ");
+  //   return Math.max(parseInt(numbers[-1]), parseInt(numbers[-2]), parseInt(numbers[-1])).toString()
+  // }
+
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("plus")) {
+    let numbers = query.replace("?", "").split(" ");
+    return (parseInt(numbers[2]) + parseInt(numbers[4])).toString()
+  }
+
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied by")) {
+    let numbers = query.replace("?", "").split(" ");
+    return (parseInt(numbers[2]) * parseInt(numbers[4])).toString()
+  }
+
   return "";
 }
