@@ -2,6 +2,11 @@ export default function QueryProcessor(query: string): string {
   const extract_int = (str: string) => {
     return str.replace("?", "").replace(","," ").split(" ").map((x) => parseInt(x)).filter((x)=>!Number.isNaN(x))
   }
+
+  const operations = (str: string) => {
+    return str.replace("?", "").replace(","," ").replace("what is", "").split(" ").filter((x)=>Number.isNaN(parseInt(x)))
+  }
+
   if (query.toLowerCase().includes("shakespeare")) {
     return (
       "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
@@ -22,6 +27,11 @@ export default function QueryProcessor(query: string): string {
   //   let numbers = query.split(" ");
   //   return Math.max(parseInt(numbers[-1]), parseInt(numbers[-2]), parseInt(numbers[-1])).toString()
   // }
+
+  if (query.toLowerCase().includes("what is") && ("to the power of")) {
+    let numbers = extract_int(query);
+    return (numbers[0]**numbers[1]).toString()
+  }
 
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("plus")) {
     let numbers = extract_int(query);
