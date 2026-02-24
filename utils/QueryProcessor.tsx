@@ -34,8 +34,8 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied by")) {
-    let numbers = query.replace("?", "").split(" ");
-    return (parseInt(numbers[2]) * parseInt(numbers[5])).toString()
+    let numbers = extract_int(query);
+    return (numbers.reduce(((x,y)=>x*y), 1)).toString()
   }
 
   return "";
