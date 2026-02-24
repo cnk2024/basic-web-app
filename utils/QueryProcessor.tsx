@@ -28,6 +28,11 @@ export default function QueryProcessor(query: string): string {
     return (parseInt(numbers[2]) + parseInt(numbers[4])).toString()
   }
 
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("minus")) {
+    let numbers = query.replace("?", "").split(" ");
+    return (parseInt(numbers[2]) - parseInt(numbers[4])).toString()
+  }
+
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied by")) {
     let numbers = query.replace("?", "").split(" ");
     return (parseInt(numbers[2]) * parseInt(numbers[5])).toString()
