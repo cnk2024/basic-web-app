@@ -1,4 +1,7 @@
 export default function QueryProcessor(query: string): string {
+  // const extract_int = (str) => {
+  //   return str.replace("?", "").replace(","," ").split(" ")
+  // }
   if (query.toLowerCase().includes("shakespeare")) {
     return (
       "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
@@ -27,7 +30,7 @@ export default function QueryProcessor(query: string): string {
 
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied by")) {
     let numbers = query.replace("?", "").split(" ");
-    return (parseInt(numbers[2]) * parseInt(numbers[4])).toString()
+    return (parseInt(numbers[2]) * parseInt(numbers[5])).toString()
   }
 
   return "";
